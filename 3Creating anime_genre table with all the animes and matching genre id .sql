@@ -51,6 +51,7 @@ select * from genres;
 
 -- now we will match all the genres with the anime_id s so lets try that 
 
+-- CREATION OF ANIME GENRE_TABLE 
 select anime_id,genre  from anime;
 -- lets create a table like this than we will split comma values in genre column 
 -- now we have all the ids and genres lets split them apart 
@@ -87,7 +88,8 @@ select distinct(genre) from anime_genre  where genre not in (select name from ge
 insert into genres(name) select distinct(genre) from anime_genre  where genre not in (select name from genres g);
 
 select * from genres;
-
+--       DISCLAIMER we will find out there is mistakes about the table but in first 54 rows we solve that problem 
+--  you can still use insert into statement but it will add nothing since our new genres table has everything. 
 
 
 -- finally we insert values from genres table now we have two foreign key in the anime_genre  table 
@@ -106,6 +108,14 @@ ALTER TABLE anime_genre
     ADD CONSTRAINT fk_anime_genre_anime FOREIGN KEY (anime_id) REFERENCES anime (anime_id);
    
  -- so those two now are foreign  key 
-   
+ -- for example following code wil give us all the  Shounen anime is our table 
+ 
+ select * from anime where anime_id in (select anime_id from anime_genre where genre_id=8);
+ 
+ 
+ --   we can simply solve this issue instead of doing all the work by using like clause but this is not how databases work 
+ -- anime table violating first normal form since genre column is not atomic it containse several values. 
+ --   We could use like clause and it will be fast but we only have 20k column i shape the database which it will run fast even with the millions of the records. 
+ -- Furter improvements can be done
    
 
