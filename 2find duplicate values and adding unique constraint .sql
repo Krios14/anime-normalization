@@ -14,3 +14,4 @@ update anime set name = 'Saru Kani Gassen Movie' where anime_id = 30059;
 
 -- so for now we do not have duplicate values so we can make our name column unique 
 alter table anime add unique (name);
+-- DISCLAIMER  I will find several issues about this table but i fixed it in the next query 
