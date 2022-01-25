@@ -115,7 +115,7 @@ ALTER TABLE anime_genre
  
  --   we can simply solve this issue instead of doing all the work by using like clause but this is not how databases work 
  -- anime table violating first normal form since genre column is not atomic it containse several values. 
- --   We could use like clause and it will be fast but we only have 20k column i shape the database which it will run fast even with the millions of the records. 
+ --   We could use like clause and it will be fast but we only have 10k row i shape the database which it will run fast even with the millions of the records. 
  -- Furter improvements can be done
    
 
